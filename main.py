@@ -21,7 +21,8 @@ args = parser.parse_args()
 Check and Execute Command Line Parameters
 """
 if args.helpFFormats:
-    print('\nValid file formats are (xml|json) specify with --ff option')
+    types = ' '.join(psn.loader.registered_formats)
+    print('\nValid file formats are ({}) specify with --ff option'.format(types))
 
 if args.helpDFormats:
     print('\nValid display formats are (raw|pretty) specify with --df option')
@@ -31,7 +32,7 @@ if args.filepath:
     if args.fformat:
         psn.loadPersonalData(args.filepath, args.fformat)
     else:
-        psn.loadPersonalData(args.filepath, psn.loader.formats.auto)
+        psn.loadPersonalData(args.filepath, 'auto')
 
     psn.displayPersonalData(psn.loader.detectFormat(args.filepath), args.dformat)
 

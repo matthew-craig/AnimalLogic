@@ -9,6 +9,3 @@ python main.py –file data/personal_data.xml --help_ff                 - to sho
 python main.py –file data/personal_data.xml –df pretty              - to show xml output in a different format
 python main.py –file data/personal_data.json –df pretty             - to show json output in a different format
  
-Thank you for your time and consideration I look forward to hearing from you once you’ve had time to review.
-
-Apologies for the issues getting this via Dropbox I can only claim post traumatic stress from watching England get mauled by Australia 13-33 :/

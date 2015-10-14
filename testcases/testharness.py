@@ -1,6 +1,6 @@
-import loaders.loader as ldr
 import unittest
 import xml.etree.ElementTree as ET
+import loader as ldr
 
 """
 Define Various TestCases
@@ -10,22 +10,23 @@ Define Various TestCases
 class TestCases(unittest.TestCase):
 
     def setUp(self):
-        self.loader = ldr.Loader()
+        self.loader = ldr.LoaderManager('loaders')
+        self.loader.load_modules()
 
     def test_detectJSON(self):
         data_format = self.loader.detectFormat('test.json')
-        self.assertEqual(data_format, ldr.ctypes.data_formats.json, "json format not detected correctly")
+        self.assertEqual(data_format, 'json', "json format not detected correctly")
 
     def test_detectXML(self):
         data_format = self.loader.detectFormat('test.xml')
-        self.assertEqual(data_format, ldr.ctypes.data_formats.xml, "xml format not detected correctly")
+        self.assertEqual(data_format, 'xml', "xml format not detected correctly")
 
     def test_loadXML(self):
-        data = self.loader.etLoader.loadXML('data/personal_data.xml')
+        data = self.loader.loadData('data/personal_data.xml','xml')
         self.assertTrue(type(data) is ET.Element, "expected xml data in string format")
 
     def test_loadJSON(self):
-        data = self.loader.sjLoader.load_json('data/personal_data.json')
+        data = self.loader.loadData('data/personal_data.json','json')
         self.assertTrue(type(data) is dict, "expected xml data in string format")
 
 """
